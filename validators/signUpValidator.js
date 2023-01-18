@@ -18,10 +18,10 @@ export const signUpSchema = joi.object({
         "string.email" : "Invalid email address. Please enter a valid email."
     }),
     password: joiPassword(complexityOptions).required(),
-    fullName: joi.string().required().min(3).max(30).messages({
+    fullName: joi.string().required().min(3).max(100).messages({
         "string.min" : "Name is too short. Please enter at least 4 characters.",
         "any.required" : "The name is required",
-        "string.max" : "Name is too long. Please limit to 30 characters."
+        "string.max" : "Name is too long. Please limit to 100 characters."
     }),
     photo: joi.string().uri(),
     birth_date: joi.date().max(Date.now()),
