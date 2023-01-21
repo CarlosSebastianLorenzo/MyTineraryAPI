@@ -1,4 +1,4 @@
-import 'dotenv/config.js'
+import 'dotenv/config.js';
 import express from "express";
 import indexRouter from "./routers/indexRouter.js";
 import cors from "cors";

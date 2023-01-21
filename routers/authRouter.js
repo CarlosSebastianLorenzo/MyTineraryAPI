@@ -1,6 +1,6 @@
 import { Router } from "express";
 import authController from "../controllers/authController.js";
-import { signUpSchema, signInSchema } from "../vaildators/signUpValidator.js";
+import { signUpSchema, signInSchema } from "../validators/signUpValidator.js";
 import validator from "../middlewares/validator.js";
 import emailAlreadyExists from "../middlewares/emailAlredyExists.js";
 import passport from "../middlewares/passport.js";
