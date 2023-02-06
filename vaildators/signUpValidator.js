@@ -25,7 +25,8 @@ export const signUpSchema = joi.object({
     }),
     photo: joi.string().uri(),
     birth_date: joi.date().max(Date.now()),
-    verified: joi.boolean()
+    verified: joi.boolean(),
+    country: joi.string()
 })
 
 export const signInSchema = joi.object({

@@ -7,7 +7,8 @@ const userSchema = Schema({
     photo: {type: String},
     birth_date: { type: String},
     verified: { type: Boolean, default: false},
-    author: {type: Boolean, default: false}
+    author: {type: Boolean, default: false},
+    country: {type: String}
 },{
     timestamps: true
 })
