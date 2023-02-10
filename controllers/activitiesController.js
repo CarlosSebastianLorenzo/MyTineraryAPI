@@ -1,10 +1,10 @@
-import Itinerary from '../models/Itinerary.js'
 import Activity from '../models/Activity.js'
 
 const ActivitiesController = {
     createOneActivity: async (req, res, next) => {
         try {
             let activity = await Activity.create(req.body)
+
             res.status(201).json({ response: activity})
         }
         catch (err) {
@@ -32,8 +32,7 @@ const ActivitiesController = {
 
     readAllActivitiesByItinerary: async (req, res, next) => {
         try {
-            let itinerary = await Itinerary.findOne({ name : req.params.name })
-            let activities = await Activity.find( { itineraryId: itinerary._id} )
+            let activities = await Activity.find( { itineraryId: req.params.itineraryId} )
             res.status(200).json({ response: activities})
         } catch (err) {
             next(err)

@@ -11,7 +11,7 @@ activitiesRouter.post('/', createOneActivity);
 activitiesRouter.post('/many', createManyActivities);
 
 activitiesRouter.get('/', readAllActivities);
-activitiesRouter.get('/:city', readAllActivitiesByItinerary);
+activitiesRouter.get('/:itineraryId', readAllActivitiesByItinerary);
 activitiesRouter.get('/id/:id', readOneActivityById);
 activitiesRouter.get('/name/:itinerary', readOneActivityByName);
 
