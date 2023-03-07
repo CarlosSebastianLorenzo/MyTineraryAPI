@@ -11,6 +11,15 @@ const citiesController = {
         }
     },
 
+    createManyCities: async (req, res, next) => {
+        try {
+            let cities = await City.insertMany(req.body)
+            res.status(201).json({ response: cities})
+        } catch (err) {
+            res.status(500).json({ response: err})
+        }
+    },
+
     readAllCities: async (req, res, next) => {
         try {
             let cities = await City.find()
