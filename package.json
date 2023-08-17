@@ -1,0 +1,23 @@
+{
+  "name": "my-tinerary-api",
+  "version": "1.0.0",
+  "description": "Api for MyTinerary Website",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlosSebastianLorenzo/MyTineraryAPI.git"
+  },
+  "author": "Lorenzo Carlos Sebastian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CarlosSebastianLorenzo/MyTineraryAPI/issues"
+  },
+  "homepage": "https://github.com/CarlosSebastianLorenzo/MyTineraryAPI#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
