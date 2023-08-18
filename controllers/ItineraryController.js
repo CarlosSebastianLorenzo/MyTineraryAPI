@@ -33,7 +33,7 @@ const ItinerariesController = {
     readAllItinerariesByCity: async (req, res, next) => {
         try {
             let city = await City.findOne({ city : req.params.city })
-            let itineraries = await Itinerary.find( { city: city._id} )
+            let itineraries = await Itinerary.find( { cityId: city._id} )
             res.status(200).json({ response: itineraries})
         } catch (err) {
             next(err)
@@ -51,7 +51,7 @@ const ItinerariesController = {
 
     readOneItineraryByName: async (req, res, next) => {
         try {
-            let itinerary = await Itinerary.findOne({ itinerary : req.params.itinerary })
+            let itinerary = await Itinerary.findOne({ name : req.params.itinerary })
             res.status(200).json({ response: itinerary })
         } catch (err) {
             next(err)
