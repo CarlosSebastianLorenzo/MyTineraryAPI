@@ -2,7 +2,6 @@ import City from "../models/City.js";
 
 const citiesController = {
     createOneCity: async (req, res, next) => {
-
         try {
             let city = await City.create(req.body)
             res.status(201).json({ response: city})
@@ -38,6 +37,24 @@ const citiesController = {
             res.status(500).json({ response: err})
         }
     },
+
+    updateOneCity: async (req, res, next) => {
+        try {
+            let city = await City.findByIdAndUpdate(req.body._id, req.body, {new: true})
+            res.status(200).json({ response: city })
+        } catch (err) {
+            res.status(500).json({ response: err})
+        }
+    },
+
+    deleteOneCity: async (req, res, next) => {
+        try {
+            await City.findByIdAndDelete(req.body._id)
+            res.status(200).json({ response: 'resource deleted successfully'})
+        } catch (err) {
+            res.status(500).json({ response: err})
+        }
+    }
 }
 
 export default citiesController;
