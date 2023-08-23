@@ -7,7 +7,8 @@ const citiesController = {
             res.status(201).json({ response: city})
         }
         catch (err) {
-            res.status(500).json({ response: err})
+            // res.status(500).json({ response: err})
+            next(err)
         }
     },
 
@@ -16,7 +17,8 @@ const citiesController = {
             let cities = await City.insertMany(req.body)
             res.status(201).json({ response: cities})
         } catch (err) {
-            res.status(500).json({ response: err})
+            // res.status(500).json({ response: err})
+            next(err)
         }
     },
 
@@ -25,7 +27,8 @@ const citiesController = {
             let cities = await City.find()
             res.status(200).json({ response: cities})
         } catch (err) {
-            res.status(500).json({ response: err})
+            // res.status(500).json({ response: err})
+            next(err)
         }
     },
 
@@ -34,7 +37,8 @@ const citiesController = {
             let city = await City.findById(req.params.id)
             res.status(200).json({ response: city})
         } catch (err) {
-            res.status(500).json({ response: err})
+            // res.status(500).json({ response: err})
+            next(err)
         }
     },
 
@@ -43,7 +47,8 @@ const citiesController = {
             let city = await City.findOne({ city : req.params.city })
             res.status(200).json({ response: city })
         } catch (err) {
-            res.status(500).json({ response: err})
+            // res.status(500).json({ response: err})
+            next(err)
         }
     },
 
@@ -52,7 +57,8 @@ const citiesController = {
             let city = await City.findByIdAndUpdate(req.body._id, req.body, {new: true})
             res.status(200).json({ response: city })
         } catch (err) {
-            res.status(500).json({ response: err})
+            // res.status(500).json({ response: err})
+            next(err)
         }
     },
 
@@ -61,7 +67,8 @@ const citiesController = {
             await City.findByIdAndDelete(req.body._id)
             res.status(200).json({ response: 'resource deleted successfully'})
         } catch (err) {
-            res.status(500).json({ response: err})
+            // res.status(500).json({ response: err})
+            next(err)
         }
     }
 }
