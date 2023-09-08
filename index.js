@@ -24,10 +24,9 @@ server.use('/api',
 , indexRouter);
 
 
-
 server.get('/',
     (req, res, next) =>{
-    res.send('Welcome to the MyTinerary server, try the route http://localhost:'+process.env['PORT']+'/api/Cities')
+    res.send('Welcome to the MyTinerary server, check the routes on http://localhost:'+process.env['PORT']+'/api')
     }
 )
 
