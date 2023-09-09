@@ -17,7 +17,7 @@ export const signUpSchema = joi.object({
         "any.required" : "The email is required",
         "string.email" : "Invalid email address. Please enter a valid email."
     }),
-    password: joiPassword(complexityOptions),
+    password: joiPassword(complexityOptions).required(),
     name: joi.string().required().min(3).max(30).messages({
         "string.min" : "Name is too short. Please enter at least 4 characters.",
         "any.required" : "The name is required",
@@ -26,4 +26,13 @@ export const signUpSchema = joi.object({
     photo: joi.string().uri(),
     birth_date: joi.date().max(Date.now()),
     verified: joi.boolean()
+})
+
+export const signInSchema = joi.object({
+    email: joi.string().email().required().messages({
+        "string.empty" : "The field email cannot be empty.",
+        "any.required" : "The email is required",
+        "string.email" : "Invalid email address. Please enter a valid email."
+    }),
+    password: joiPassword(complexityOptions)
 })
