@@ -12,15 +12,15 @@ const authController = {
             let body = {...req.body}
             body.password = passwordHash
 
-            const user = await User.create(body)
+            const newUser = await User.create(body)
 
-            let {email, photo, _id} = user
+            let {email, photo, _id, fullName} = newUser
 
-            const token = jwt.sign( { email, photo }, process.env['SECRET_KEY'], { expiresIn: '1h'})
+            const token = jwt.sign( { email, photo, _id, fullName }, process.env['SECRET_KEY'], { expiresIn: '1h'})
 
             return res.status(201).json({
                 success: true, 
-                response: {email, photo, _id},
+                response: {email, photo, _id, fullName},
                 token: token,
                 message: 'Sign up successfully.'
             })
@@ -46,13 +46,13 @@ const authController = {
                 throw new Error("Incorrect email address or password")
             }
 
-            let {email, photo, _id} = user
+            let {email, photo, _id, fullName} = user
 
-            const token = jwt.sign( { email, photo }, process.env['SECRET_KEY'], { expiresIn: '1h'})
+            const token = jwt.sign( { email, photo, _id, fullName }, process.env['SECRET_KEY'], { expiresIn: '1h'})
 
             return res.status(200).json({
                 success: true, 
-                response: {email, photo, _id},
+                response: {email, photo, _id, fullName},
                 token: token,
                 message: 'Sign in successfully.'
             })
@@ -64,13 +64,14 @@ const authController = {
     },
 
     loginWithToken: (req, res) => {
-        console.log(req.user)
-        const { email, photo, name, _id} = req.user
+
+        const { email, photo, fullName, _id} = req.user
 
         res.status(200).json({
             success:true,
-            response: {email, photo, name, _id},
-            message: 'Sign in successfully.'
+            response: {email, photo, fullName, _id},
+            message: 'Sign in successfully.',
+            body: req.body
         })
     }
 
