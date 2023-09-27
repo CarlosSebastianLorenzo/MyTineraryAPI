@@ -64,7 +64,13 @@ const CommentsController = {
 
     updateOneComment: async (req, res, next) => {
         try {
-            let comment = await Comment.findByIdAndUpdate(req.body._id, req.body, {new: true})
+            console.log(req.body)
+            let comment = await Comment.findByIdAndUpdate(req.body._id, req.body, {new: true}).populate(
+                {
+                    path: 'userId',
+                    select: 'fullName photo'
+                }
+            )
             res.status(200).json({ response: comment })
         } catch (err) {
             next(err)
